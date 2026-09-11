@@ -1,0 +1,634 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0d0d0d;
+    color: white;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+#desktop {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    background-image: url("download (1).jpeg");
+    background-size: cover;
+    background-position: center;
+}
+
+#topbar {
+    height: 50px;
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #0d0d0d;
+    border-bottom: 1px solid #333;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+}
+
+.brand {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.top-info {
+    display: flex;
+    gap: 15px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+#desktop-area {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.welcome-text {
+    text-align: center;
+}
+
+.welcome-text p {
+    margin: 0 0 10px;
+    font-size: 11px;
+    color: #aaa;
+}
+
+.welcome-text h1 {
+    margin: 0;
+    font-size: 60px;
+}
+
+.welcome-text span {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.desktop-icons {
+    position: absolute;
+    left: 20px;
+    top: 75px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.app-icon {
+    width: 65px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.icon-box {
+    width: 42px;
+    height: 42px;
+
+    margin: 0 auto 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #181818;
+    border: 1px solid #444;
+    border-radius: 6px;
+
+    font-size: 17px;
+}
+
+.app-icon:hover .icon-box {
+    background: #242424;
+}
+
+.app-icon.selected .icon-box {
+    border-color: white;
+}
+
+#dock {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 5px;
+
+    padding: 6px;
+
+    background: #0d0d0d;
+    border: 1px solid #333;
+    border-radius: 7px;
+
+    z-index: 900;
+}
+
+#dock button {
+    width: 38px;
+    height: 38px;
+
+    border: 0;
+    border-radius: 5px;
+
+    background: #1c1c1c;
+    color: white;
+
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#dock button:hover {
+    background: #292929;
+}
+
+.window {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 600px;
+    min-height: 330px;
+
+    display: none;
+
+    background: #151515;
+    border: 1px solid #444;
+
+    overflow: hidden;
+
+    z-index: 10;
+}
+
+.small-window {
+    width: 370px;
+    min-height: auto;
+}
+
+.projects-window {
+    width: 560px;
+}
+
+.window-header {
+    height: 42px;
+
+    padding: 0 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #1b1b1b;
+    border-bottom: 1px solid #333;
+
+    cursor: grab;
+    user-select: none;
+}
+
+.window-header:active {
+    cursor: grabbing;
+}
+
+.window-header span {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.window-header button {
+    width: 24px;
+    height: 24px;
+
+    border: 0;
+    background: none;
+
+    color: white;
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.window-header button:hover {
+    background: #333;
+}
+
+.window-content {
+    padding: 20px;
+}
+
+.welcome-content h2 {
+    margin-top: 0;
+    font-size: 23px;
+}
+
+.welcome-content p {
+    color: #aaa;
+    line-height: 1.5;
+}
+
+.info-card {
+    margin-top: 20px;
+    padding: 14px;
+
+    background: #1c1c1c;
+    border: 1px solid #333;
+}
+
+.info-card p {
+    margin-bottom: 0;
+}
+
+.small-text {
+    font-size: 12px;
+}
+
+.notes-layout {
+    display: flex;
+    height: 370px;
+}
+
+.notes-sidebar {
+    width: 165px;
+    padding: 10px;
+
+    border-right: 1px solid #333;
+
+    overflow-y: auto;
+}
+
+.new-note {
+    width: 100%;
+    padding: 8px;
+
+    border: 0;
+    background: white;
+    color: black;
+
+    cursor: pointer;
+}
+
+.note-item {
+    margin-top: 7px;
+    padding: 9px;
+
+    cursor: pointer;
+
+    color: #aaa;
+    font-size: 13px;
+}
+
+.note-item:hover,
+.note-item.active {
+    background: #242424;
+    color: white;
+}
+
+.notes-main {
+    flex: 1;
+
+    padding: 14px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.notes-main input,
+.notes-main textarea {
+    width: 100%;
+
+    border: 1px solid #333;
+    outline: none;
+
+    background: #1c1c1c;
+    color: white;
+
+    padding: 9px;
+}
+
+.notes-main input {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.notes-main textarea {
+    flex: 1;
+    resize: none;
+}
+
+.save-button {
+    align-self: flex-end;
+
+    padding: 8px 14px;
+
+    border: 0;
+    background: white;
+    color: black;
+
+    cursor: pointer;
+}
+
+.calculator {
+    padding: 14px;
+}
+
+#calc-display {
+    width: 100%;
+
+    padding: 12px;
+    margin-bottom: 9px;
+
+    border: 1px solid #333;
+
+    background: #090909;
+    color: white;
+
+    text-align: right;
+    font-size: 23px;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.calc-buttons button {
+    height: 46px;
+
+    border: 1px solid #333;
+    background: #1d1d1d;
+    color: white;
+
+    cursor: pointer;
+}
+
+.calc-buttons button:hover {
+    background: #292929;
+}
+
+.calc-buttons .zero {
+    grid-column: span 4;
+}
+
+.focus-content {
+    padding: 25px;
+    text-align: center;
+}
+
+.focus-label {
+    color: #999;
+    font-size: 10px;
+}
+
+#timer {
+    margin: 18px 0 22px;
+    font-size: 58px;
+    font-weight: bold;
+}
+
+.focus-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.focus-buttons button {
+    padding: 8px 13px;
+
+    border: 1px solid #333;
+    background: #1d1d1d;
+    color: white;
+
+    cursor: pointer;
+}
+
+.focus-buttons button:hover {
+    background: #292929;
+}
+
+.projects-content {
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-card {
+    padding: 13px;
+
+    background: #1b1b1b;
+    border: 1px solid #333;
+}
+
+.project-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-top h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.project-top span {
+    font-size: 9px;
+    color: #999;
+}
+
+.project-card p {
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.project-card small {
+    color: #777;
+}
+
+#notification {
+    position: absolute;
+    top: 65px;
+    right: 15px;
+
+    width: 210px;
+    padding: 11px;
+
+    display: none;
+
+    background: #171717;
+    border: 1px solid #444;
+
+    z-index: 2000;
+}
+
+#notification strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+
+#notification-text {
+    color: #aaa;
+    font-size: 12px;
+}
+
+body.light {
+    background: #eee;
+    color: #111;
+}
+
+body.light #desktop {
+    background-image: none;
+    background-color: #eee;
+}
+
+body.light #topbar {
+    background: #f5f5f5;
+    border-color: #ccc;
+}
+
+body.light .brand {
+    color: #111;
+}
+
+body.light .top-info {
+    color: #555;
+}
+
+body.light .welcome-text p,
+body.light .welcome-text span {
+    color: #555;
+}
+
+body.light .icon-box {
+    background: #f5f5f5;
+    border-color: #bbb;
+    color: #111;
+}
+
+body.light .app-icon {
+    color: #222;
+}
+
+body.light #dock {
+    background: #f5f5f5;
+    border-color: #ccc;
+}
+
+body.light #dock button {
+    background: #e5e5e5;
+    color: #111;
+}
+
+body.light .window {
+    background: #f7f7f7;
+    color: #111;
+    border-color: #bbb;
+}
+
+body.light .window-header {
+    background: #e9e9e9;
+    border-color: #ccc;
+}
+
+body.light .window-header button {
+    color: #111;
+}
+
+body.light .welcome-content p,
+body.light .project-card p {
+    color: #555;
+}
+
+body.light .info-card,
+body.light .project-card {
+    background: #e9e9e9;
+    border-color: #ccc;
+}
+
+body.light .notes-sidebar {
+    border-color: #ccc;
+}
+
+body.light .note-item {
+    color: #555;
+}
+
+body.light .note-item:hover,
+body.light .note-item.active {
+    background: #ddd;
+    color: #111;
+}
+
+body.light .notes-main input,
+body.light .notes-main textarea {
+    background: white;
+    color: #111;
+    border-color: #ccc;
+}
+
+body.light .calc-buttons button,
+body.light .focus-buttons button {
+    background: #e5e5e5;
+    color: #111;
+    border-color: #ccc;
+}
+
+body.light #notification {
+    background: white;
+    border-color: #ccc;
+}
+
+body.light #notification-text {
+    color: #555;
+}
+
+@media (max-width: 700px) {
+    .welcome-text h1 {
+        font-size: 45px;
+    }
+
+    .desktop-icons {
+        left: 8px;
+    }
+
+    .window {
+        width: 90%;
+        max-height: 75vh;
+    }
+
+    .notes-layout {
+        height: 330px;
+    }
+
+    #dock {
+        bottom: 10px;
+    }
+}
+
