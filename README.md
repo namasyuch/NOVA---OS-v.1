@@ -36,4 +36,8 @@ This project was built as part of Hack Club's WebOS 1 mission.
 
 ## AI Usage
 During development, I used AI for some parts of the project. A reviewer pointed out that I was relying on AI too much.
-After the feedback, I went back through the project and simpli
+After the feedback, I went back through the project and simplified the code, removed unnecessary comments and features, and worked on making more of the code my own.
+I tested the changes myself and made the final design and project decisions.
+
+## Author
+Built by Namasyu.
